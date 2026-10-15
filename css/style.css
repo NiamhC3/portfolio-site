@@ -420,6 +420,19 @@ section + section {
 }
 
 /* ===== Section Headings ===== */
+.back-link {
+  display: inline-block;
+  margin-bottom: var(--space-lg);
+  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+  color: var(--color-text-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.back-link:hover {
+  color: var(--color-accent);
+}
+
 .section-header {
   margin-bottom: var(--space-2xl);
 }
