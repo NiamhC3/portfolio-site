@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCUTTLE Soda Retriever — Niamh Coles</title>
+  <meta name="description" content="Autonomous mobile robot with LiDAR-based voxel path planning, computer vision, and a servo-actuated gripper for object retrieval.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="nav__logo">niamh<span>.</span>coles</a>
+      <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+      <ul class="nav__links">
+        <li><a href="../index.html" class="nav__link">Home</a></li>
+        <li><a href="../about.html" class="nav__link">About</a></li>
+        <li><a href="../projects.html" class="nav__link nav__link--active">Projects</a></li>
+        <li><a href="../resume.html" class="nav__link">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-header__label">Robotics · Autonomous Navigation · 2026</span>
+          <h1 class="section-header__title">SCUTTLE Soda Retriever</h1>
+          <p class="section-header__desc">
+            An autonomous mobile robot that searches a room, identifies a
+            target soda can, navigates to it, and picks it up, using
+            LiDAR-based path planning and computer vision.
+          </p>
+        </div>
+
+        <div style="margin-bottom: var(--space-lg); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+          <span class="project-badge project-badge--class">Class Project</span>
+          <img src="../assets/images/MapGenerationFromLidar.png" alt="LiDAR-generated voxel map showing obstacles, empty space, and robot position" style="max-width: 100%; max-height: 500px; height: auto; display: block; margin-inline: auto;">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-sm); font-style: italic;">[SCUTTLE voxelized map when placed between two obstacles]</p>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-2xl);">
+          Team project (MXET 300 — Mechatronics I). My contribution:
+          LiDAR voxelization and autonomous path planning.
+        </p>
+
+        <h2>Motivation</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-lg);">
+          The Final project for Mechatronics I challenged us to integrate
+          sensor calibration, motor control, embedded programming, computer
+          vision, and autonomous navigation into a single working system. Our
+          goal: a SCUTTLE v3 robot that could autonomously search a room for a
+          specific soda can, navigate around obstacles to reach it, pick it up
+          with a custom gripper, and return it to the user.
+        </p>
+
+        <div style="margin-bottom: var(--space-md); text-align: center;">
+          <img src="../assets/images/ScuttleImage.jpg" alt="SCUTTLE v3 robot with gripper holding a soda can" style="max-width: 280px; width: 100%; height: auto; border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); display: block; margin-inline: auto;">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-2xl); font-style: italic; text-align: center;">[SCUTTLE robot holding a can while returning to start]</p>
+
+        <h2>System Design</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          The system was built on the SCUTTLE v3 mobile platform (Raspberry Pi 4,
+          omni-directional chassis) with three integrated subsystems developed in
+          parallel by our four-person team:
+        </p>
+        <ul style="color: var(--color-text-muted); margin-bottom: var(--space-md); padding-left: var(--space-xl); list-style: disc;">
+          <li><strong>Robotic arm</strong> — A 3D-printed servo-actuated claw gripper with a pitch mechanism for lifting, driven by two MG996R servos through a PCA9685 I2C driver</li>
+          <li><strong>Computer vision</strong> — HSV color filtering with PI motion control for centering on and approaching the target can</li>
+          <li><strong>Autonomous navigation</strong> — LiDAR-based room mapping with voxelized path planning and obstacle avoidance (my contribution)</li>
+        </ul>
+
+        <h2>My Contribution: LiDAR Voxelization &amp; Path Planning</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          I designed and implemented the autonomous navigation system that
+          allows the robot to intelligently search an unknown room while maintaining awareness of its position:
+        </p>
+        <ul style="color: var(--color-text-muted); margin-bottom: var(--space-md); padding-left: var(--space-xl); list-style: disc;">
+          <li><strong>Voxelization</strong>: LiDAR scans within a ~1 m radius are discretely placed into a 15 cm &times; 15 cm grid. Each cell is marked empty (safe), full (obstacle), or unknown (unexplored).</li>
+          <li><strong>Path generation</strong>: If the robot does not see the can, it generates minimal length random paths to the nearest unknown voxel, filtering out any that collide with obstacles (accounting for a 3-voxel robot width). Paths are then shortened by eliminating redundant waypoints.</li>
+          <li><strong>Dynamic replanning</strong>: After each step in the path, the robot rescans for the soda can (handing off to the vision system if found) and checks for new obstacles, replanning as needed.</li>
+          <li><strong>Localization</strong>: Heading from a compass and distance from wheel encoders are fused into a global position estimate updated at every step.</li>
+        </ul>
+
+        <div style="margin-bottom: var(--space-2xl); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+          <img src="../assets/images/PathPlanningFromKnownMap.png" alt="Path planning algorithm output showing original and optimized waypoints on a voxel grid" style="max-width: 100%; max-height: 500px; height: auto; display: block; margin-inline: auto;">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-top: calc(-1 * var(--space-lg)); margin-bottom: var(--space-2xl); font-style: italic;">[Path planning and optimizing to travel to nearest unknown voxel]</p>
+
+        <h2>Outcome</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          The integrated system successfully demonstrated autonomous can
+          detection, approach, grip, and retrieval. The robot could follow
+          planned paths and detect obstacles dynamically.
+        </p>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-2xl);">
+          The main limitation was motor drift — significant differences in
+          wheel speeds caused the robot to deviate from planned paths, and the
+          resulting localization error caused LiDAR readings to overwrite the
+          voxel map incorrectly. While simple paths and local obstacle avoidance
+          worked well, fully autonomous room-scale exploration was unreliable
+          due to this cumulative drift. This was an instructive failure, it
+          highlighted the importance of closed-loop localization (e.g., SLAM)
+          over dead reckoning for real autonomous navigation.
+        </p>
+
+        <div style="margin-top: var(--space-2xl); padding-top: var(--space-xl); border-top: 1px solid var(--color-border);">
+          <a href="../projects.html" class="btn btn--outline">&larr; All projects</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <span class="footer__copy">&copy; 2026 Niamh Coles</span>
+      <div class="footer__links">
+        <a href="https://github.com/NiamhC3" class="footer__link" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/niamh-coles" class="footer__link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:niamhcoles@gmail.com" class="footer__link">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

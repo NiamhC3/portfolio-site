@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multimodal Sensor PCB — Niamh Coles</title>
+  <meta name="description" content="Custom rigid/flex PCB integrating temperature, humidity, acceleration, force, and shear detection for medical sensing.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="nav__logo">niamh<span>.</span>coles</a>
+      <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+      <ul class="nav__links">
+        <li><a href="../index.html" class="nav__link">Home</a></li>
+        <li><a href="../about.html" class="nav__link">About</a></li>
+        <li><a href="../projects.html" class="nav__link nav__link--active">Projects</a></li>
+        <li><a href="../resume.html" class="nav__link">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-header__label">Electronics · Research · 2025 - Present</span>
+          <h1 class="section-header__title">Multimodal Sensor PCB</h1>
+          <p class="section-header__desc">
+            Independently designed a rigid/flex PCB integrating five sensing
+            modalities for medical device research.
+          </p>
+        </div>
+
+        <div class="project-card__image" style="aspect-ratio: 16/9; margin-bottom: var(--space-2xl); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border);">
+          <span class="project-badge project-badge--research">Research</span>
+          <img src="../assets/images/PCBTest.jpg" alt="Multimodal rigid/flex PCB during testing">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-top: calc(-1 * var(--space-lg)); margin-bottom: var(--space-2xl); font-style: italic;">[PCB Desktop Test with an Arduino as temporary Power Source]</p>
+
+        <h2>Motivation</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-2xl);">
+          Diabetic Foot Ulcers are a severe and common sympton of diabetes. With the 
+          reduced peripheral sensory capabilities many diabetic individuals struggle with,
+          small injuries or blood flow reducing positions can lead to tissue death and infection
+          on the surface of the foot. This device is a multimodal sensing insole designed to create
+          a uniquely comprehensive view of the plantar surface, through pressure, shear force, temperature,
+          humidity, and acceleration. This data is collected with the intention of detecting the precursor
+          conditions to DFUs, in an attempt to warn the wearer and prevent formation. 
+        </p>
+
+        <h2>Approach</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          I independently designed and built the multimodal rigid/flex PCB
+          in <strong>Altium Designer</strong>, integrating:
+        </p>
+        <ul style="color: var(--color-text-muted); margin-bottom: var(--space-md); padding-left: var(--space-xl); list-style: disc;">
+          <li>Temperature and humidity sensing</li>
+          <li>Accelerometer for motion/orientation detection</li>
+          <li>Vertical force measurement</li>
+          <li>A novel shear force detection method using force-sensitive resistors (FSRs)</li>
+        </ul>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          The board is driven by a <strong>Nordic nRF5340</strong>
+          microcontroller module with Bluetooth Low Energy (BLE)
+          connectivity for wireless data transmission.
+        </p>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-2xl);">
+          For validation, I designed custom experiments to generate
+          <strong>Bland-Altman plots</strong> for the temperature and humidity
+          sensors and created models for the shear sensor response. Iterated through 
+          shear sensor designs to optimize accuracy and repeatability. 
+        </p>
+
+        <div style="margin-bottom: var(--space-2xl); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+          <img src="../assets/images/InsoleFBD.png" alt="Insole FBD" style="max-width: 100%; max-height: 500px; height: auto; display: block; margin-inline: auto;">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-top: calc(-1 * var(--space-lg)); margin-bottom: var(--space-2xl); font-style: italic;">[Insole functional block diagram]</p>
+
+        <h2>Results</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          The full PCB was verified to be functional, with sensor readings near or within 
+          manufacturer guidelines, and Bluetooth functioning as expected. While iterations continue to improve
+          the shear sensor capabilities and grow the dataset to prevent overfitting, an initial model 
+          produced good results:
+        </p>
+        <ul style="color: var(--color-text-muted); margin-bottom: var(--space-md); padding-left: var(--space-xl); list-style: disc;">
+          <li>Detects on-axis shear forces of approximately <strong>5 N</strong></li>
+          <li>Bill of materials as low as <strong>$20</strong></li>
+          <li>Measures vertical force to within <strong>1–2 N</strong> accuracy</li>
+        </ul>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-2xl);">
+          This work is being prepared for submission to an IEEE journal.
+        </p>
+
+        <div style="margin-bottom: var(--space-2xl); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+          <img src="../assets/images/PCB.png" alt="Multimodal sensor PCB" style="max-width: 100%; max-height: 500px; height: auto; display: block; margin-inline: auto;">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-top: calc(-1 * var(--space-lg)); margin-bottom: var(--space-2xl); font-style: italic;">[Manufactured PCB (left) and Altium PCB (right)]</p>
+
+        <div style="margin-top: var(--space-2xl); padding-top: var(--space-xl); border-top: 1px solid var(--color-border);">
+          <a href="../projects.html" class="btn btn--outline">&larr; All projects</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <span class="footer__copy">&copy; 2026 Niamh Coles</span>
+      <div class="footer__links">
+        <a href="https://github.com/NiamhC3" class="footer__link" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/niamh-coles" class="footer__link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:niamhcoles@gmail.com" class="footer__link">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

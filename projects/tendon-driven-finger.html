@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tendon-Driven Robotic Finger — Niamh Coles</title>
+  <meta name="description" content="Backdrivable 4-DOF tendon-driven robotic finger with PID and feedforward control using motor torques and Jacobians.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="nav__logo">niamh<span>.</span>coles</a>
+      <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+      <ul class="nav__links">
+        <li><a href="../index.html" class="nav__link">Home</a></li>
+        <li><a href="../about.html" class="nav__link">About</a></li>
+        <li><a href="../projects.html" class="nav__link nav__link--active">Projects</a></li>
+        <li><a href="../resume.html" class="nav__link">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-header__label">Robotics · Controls · 2025</span>
+          <h1 class="section-header__title">Tendon-Driven Robotic Finger</h1>
+          <p class="section-header__desc">
+            Built the actuation and control system for a backdrivable,
+            four-DOF tendon-driven robotic finger with force control.
+          </p>
+        </div>
+
+        <div class="project-card__image" style="aspect-ratio: 16/9; margin-bottom: var(--space-2xl); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border);">
+          <span class="project-badge project-badge--research">Research</span>
+          <img src="../assets/images/REUn+1FingerMount.jpg" alt="Tendon-driven robotic finger mounted on motor assembly">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-top: calc(-1 * var(--space-lg)); margin-bottom: var(--space-2xl); font-style: italic;">[Caption: Edit title here]</p>
+
+        <h2>Motivation</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-2xl);">
+          Tendon-driven robotic fingers are central to dexterous design. By remotizing 
+          force, they can achieve human-like motions in a compact form
+          factor. This is done by utilizing the space available lower in the hand or forearm
+          to store more complex systems and larger motors. This REU project at the NSF Human 
+          AugmentatioN via Dexterity Engineering Research Center focused on building a finger that is not only position-controlled
+          but also backdrivable, allowing compliant interaction with objects.
+        </p>
+
+        <h2>Approach</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          The finger uses an <strong>n+1 underactuated</strong> tendon
+          routing scheme with a four-bar coupling on two of its flexion
+          joints, giving it four degrees of freedom, or three independant degree of freedom. 
+          The proximal and medial joints form a four-bar linkage, approximated as linear for proximal
+          angles up to ~70°. I was responsible for the full actuation and
+          control pipeline:
+        </p>
+        <ul style="color: var(--color-text-muted); margin-bottom: var(--space-md); padding-left: var(--space-xl); list-style: disc;">
+          <li>Built the control system around four <strong>ODrive Pro</strong> motor controllers driving <strong>Maxon ECX Torque XL</strong> motors with <strong>AS5147 magnetic encoders</strong>, communicating over CAN bus via a <strong>Teensy 4.1</strong></li>
+          <li>Implemented <strong>PID and gravity feedforward control</strong> using center-of-mass data from OnShape, with torque balancing and motor torques bounded between 5–25 mNm to manage heating</li>
+          <li>Used motor torques and <strong>Jacobians</strong> to drive the finger to commanded joint positions</li>
+          <li>Designed and fabricated custom motor mounts in OnShape</li>
+          <li>Managed CAN bus wiring (twisted pairs, 120 &ohm; terminators, common ground) and debugged signal integrity with an oscilloscope</li>
+          <li>Wired and soldered the full electronics system</li>
+          <li>Built a Python serial UI (Tkinter/Matplotlib) for real-time monitoring, PID tuning, and control</li>
+        </ul>
+
+        <div style="margin-bottom: var(--space-lg); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+          <img src="../assets/images/REUFourBarCouplingMath.png" alt="Four-bar coupling mathematical model" style="max-width: 100%; max-height: 500px; height: auto; display: block; margin-inline: auto;">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-top: calc(-1 * var(--space-lg)); margin-bottom: var(--space-2xl); font-style: italic;">[Four-bar coupling mathematical model]</p>
+
+        <div style="margin-bottom: var(--space-lg); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+          <img src="../assets/images/REUFingerControlMath.png" alt="Finger control mathematical model" style="max-width: 100%; max-height: 500px; height: auto; display: block; margin-inline: auto;">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-top: calc(-1 * var(--space-lg)); margin-bottom: var(--space-2xl); font-style: italic;">[Finger control derivation]</p>
+
+        <h2>Outcome</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-2xl);">
+          The completed finger achieves reliable position tracking across its
+          four degrees of freedom while maintaining backdrivability, meaning
+          external forces can move the joints without damaging the mechanism.
+          The combination of feedforward compensation and PID feedback proved
+          effective for managing the nonlinear tendon-joint coupling common
+          in underactuated designs.
+          </p>
+          <p>
+          Notably, this project was limited by the hardware and time available. The Maxon motors 
+          were ungeared, allowing for high mechanical backdrivabiliity, but required the motors to 
+          generate large amounts of heat, and have a larger footprint to deliver the torque required. 
+          The heat generated was enough to soften the PLA  mounts, causing the calibrations to drift. In 
+          addition, the open source ODrive code frequently encountered errors or calibration drifts, complicating
+          testing. 
+
+          Future recomendations include eximining options for the motors, motor controllers, and mount material. 
+          Additionally, the program should be optimized to reduce run time and increase frequency of the controller updates.
+          </p>
+
+          <p>
+          Read more on the GitHub page linked below.
+          </p>
+
+        <div style="margin-top: var(--space-2xl); padding-top: var(--space-xl); border-top: 1px solid var(--color-border); display: flex; flex-wrap: wrap; gap: var(--space-md);">
+          <a href="../projects.html" class="btn btn--outline">&larr; All projects</a>
+          <a href="https://github.com/NiamhC3/REU_nplus1" class="btn btn--primary" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <span class="footer__copy">&copy; 2026 Niamh Coles</span>
+      <div class="footer__links">
+        <a href="https://github.com/NiamhC3" class="footer__link" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/niamh-coles" class="footer__link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:niamhcoles@gmail.com" class="footer__link">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

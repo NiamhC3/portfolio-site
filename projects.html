@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Niamh Coles</title>
+  <meta name="description" content="Engineering projects in dexterous robotics, PCB design, controls, and mechanical design.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo">niamh<span>.</span>coles</a>
+      <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+      <ul class="nav__links">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="projects.html" class="nav__link nav__link--active">Projects</a></li>
+        <li><a href="resume.html" class="nav__link">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__label">Portfolio</span>
+          <h1 class="section-header__title">Projects</h1>
+          <p class="section-header__desc">
+            A selection of work across robotics, electronics, and research.
+            Filter by category or browse them all.
+          </p>
+        </div>
+
+        <!-- Filters -->
+        <div class="project-filters">
+          <button class="filter-btn filter-btn--active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="robotics">Robotics</button>
+          <button class="filter-btn" data-filter="mechanical">Mechanical</button>
+          <button class="filter-btn" data-filter="electrical">Electrical</button>
+          <button class="filter-btn" data-filter="education">Education</button>
+        </div>
+
+        <!-- Project Columns by Type -->
+        <div class="project-columns">
+
+          <!-- Research -->
+          <div class="project-column project-column--research">
+            <h2 class="project-column__heading">Research</h2>
+            <p class="project-column__empty" hidden>Coming soon</p>
+
+            <a href="projects/dexterous-design-challenge.html" class="project-card" data-category="robotics education">
+              <div class="project-card__image">
+                <img src="assets/images/DDCHandDesigns.jpg" alt="Robotic hand designs from the Dexterous Design Challenge">
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__tags">
+                  <span class="tag">Robotics</span>
+                  <span class="tag">Leadership</span>
+                  <span class="tag">IEEE</span>
+                </div>
+                <h3 class="project-card__title">Dexterous Design Challenge</h3>
+                <p class="project-card__desc">
+                  Co-founded an 8-week competition where 20 teams built 11-DOF
+                  robotic hands. Published at IEEE ICELIE 2026.
+                </p>
+              </div>
+            </a>
+
+            <a href="projects/multimodal-sensor-pcb.html" class="project-card" data-category="electrical">
+              <div class="project-card__image">
+                <img src="assets/images/PCBTest.jpg" alt="Multimodal rigid/flex PCB during testing">
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__tags">
+                  <span class="tag">Electronics</span>
+                  <span class="tag">Altium</span>
+                  <span class="tag">Sensors</span>
+                </div>
+                <h3 class="project-card__title">Multimodal Sensor PCB</h3>
+                <p class="project-card__desc">
+                  Custom rigid/flex PCB integrating five sensing modalities
+                  for a medical insole, including a novel shear-detection method.
+                </p>
+              </div>
+            </a>
+
+            <a href="projects/tendon-driven-finger.html" class="project-card" data-category="robotics">
+              <div class="project-card__image">
+                <img src="assets/images/REUn+1FingerMount.jpg" alt="Tendon-driven robotic finger mounted on motor assembly">
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__tags">
+                  <span class="tag">Robotics</span>
+                  <span class="tag">Controls</span>
+                  <span class="tag">HAND ERC</span>
+                </div>
+                <h3 class="project-card__title">Tendon-Driven Robotic Finger</h3>
+                <p class="project-card__desc">
+                  Backdrivable 4-DOF finger with PID and feedforward control
+                  using motor torques and Jacobians.
+                </p>
+              </div>
+            </a>
+
+            <a href="projects/research-experience-teachers.html" class="project-card" data-category="education">
+              <div class="project-card__image">
+                <img src="assets/images/RETHands.jpg" alt="Robotic hands built during the Research Experience for Teachers program">
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__tags">
+                  <span class="tag">Teaching</span>
+                  <span class="tag">Curriculum</span>
+                  <span class="tag">HAND ERC</span>
+                </div>
+                <h3 class="project-card__title">Research Experience for Teachers</h3>
+                <p class="project-card__desc">
+                  Designed and taught a 4-week curriculum guiding six high-school
+                  teachers to build working 5-DOF robotic hands from scratch.
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Personal Projects -->
+          <div class="project-column project-column--personal">
+            <h2 class="project-column__heading">Personal Projects</h2>
+            <p class="project-column__empty" hidden>Coming soon</p>
+
+            <a href="projects/multi-dof-hand-designs.html" class="project-card" data-category="mechanical">
+              <div class="project-card__image">
+                <img src="assets/images/16DoFHand.png" alt="16-DOF dexterous robotic hand CAD model">
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__tags">
+                  <span class="tag">CAD</span>
+                  <span class="tag">SolidWorks</span>
+                  <span class="tag">Mechanical</span>
+                </div>
+                <h3 class="project-card__title">Multi-DOF Finger &amp; Hand Designs</h3>
+                <p class="project-card__desc">
+                  Iterative CAD exploration from 3-DOF fingers to a full
+                  16-DOF dexterous hand design.
+                </p>
+              </div>
+            </a>
+
+            <a href="projects/articulate-digit.html" class="project-card" data-category="mechanical">
+              <div class="project-card__image">
+                <img src="assets/images/J1_1Image_PNG.png" alt="J1 series articulate mechanical digit">
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__tags">
+                  <span class="tag">Mechanical</span>
+                  <span class="tag">SolidWorks</span>
+                  <span class="tag">Arduino</span>
+                </div>
+                <h3 class="project-card__title">Articulate Mechanical Digit</h3>
+                <p class="project-card__desc">
+                  Three-segment mechanical finger designed in SolidWorks with
+                  servo actuation and programmable Arduino control.
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Class Projects -->
+          <div class="project-column project-column--class">
+            <h2 class="project-column__heading">Class Projects</h2>
+            <p class="project-column__empty" hidden>Coming soon</p>
+
+            <a href="projects/scuttle-soda-retriever.html" class="project-card" data-category="robotics electrical">
+              <div class="project-card__image">
+                <img src="assets/images/PathPlanningFromKnownMap.png" alt="Path planning on voxel grid">
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__tags">
+                  <span class="tag">Robotics</span>
+                  <span class="tag">LiDAR</span>
+                  <span class="tag">Python</span>
+                </div>
+                <h3 class="project-card__title">SCUTTLE Soda Retriever</h3>
+                <p class="project-card__desc">
+                  Autonomous mobile robot with custom LiDAR voxel-based path planning,
+                  computer vision, and a servo-actuated gripper.
+                </p>
+              </div>
+            </a>
+
+            <a href="projects/spring-loaded-finger.html" class="project-card" data-category="robotics">
+              <div class="project-card__image">
+                <img src="assets/images/SpringDriven3DoFFinger.jpg" alt="3-DOF spring-loaded robotic finger prototype">
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__tags">
+                  <span class="tag">Dynamics</span>
+                  <span class="tag">Simulink</span>
+                  <span class="tag">Python</span>
+                </div>
+                <h3 class="project-card__title">3-DOF Spring-Loaded Finger</h3>
+                <p class="project-card__desc">
+                  Modeled, simulated, and experimentally validated a
+                  spring-return robotic finger with three independent joints.
+                </p>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <span class="footer__copy">&copy; 2026 Niamh Coles</span>
+      <div class="footer__links">
+        <a href="https://github.com/NiamhC3" class="footer__link" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/niamh-coles" class="footer__link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:niamhcoles@gmail.com" class="footer__link">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

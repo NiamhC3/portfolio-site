@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articulate Mechanical Digit — Niamh Coles</title>
+  <meta name="description" content="Three-segment mechanical finger designed in SolidWorks with servo actuation and Arduino control.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="nav__logo">niamh<span>.</span>coles</a>
+      <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+      <ul class="nav__links">
+        <li><a href="../index.html" class="nav__link">Home</a></li>
+        <li><a href="../about.html" class="nav__link">About</a></li>
+        <li><a href="../projects.html" class="nav__link nav__link--active">Projects</a></li>
+        <li><a href="../resume.html" class="nav__link">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-header__label">Mechanical · Personal Project · 2023–2024</span>
+          <h1 class="section-header__title">Articulate Mechanical Digit</h1>
+          <p class="section-header__desc">
+            A three-segment mechanical finger designed from scratch in
+            SolidWorks with servo-driven, programmable motion.
+          </p>
+        </div>
+
+        <div style="margin-bottom: var(--space-2xl); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+          <span class="project-badge project-badge--personal">Personal Project</span>
+          <img src="../assets/images/J1_1Image_PNG.png" alt="J1 series CAD model — initial finger design" style="max-width: 100%; max-height: 500px; height: auto; display: block; margin-inline: auto;">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-top: calc(-1 * var(--space-lg)); margin-bottom: var(--space-2xl); font-style: italic;">[Caption: Edit title here]</p>
+
+        <h2>Motivation</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-2xl);">
+          I started this project as a freshman driven by an interest in
+          bionic prosthetics. This was my first project in dexterous robotics, 
+          I wanted to understand how a mechanical finger actually worked before 
+          pursuing more advanced robotic hand research.
+          The goal was to design a programmable, articulating device with
+          three segments that mimics the motion of a human finger, built
+          entirely from scratch using mechanical tendons inspired by the
+          human hand. My design for this early project was highly anthropomorphic, 
+          highlighting some of the challenges of designing based off of biology.
+        </p>
+
+        <h2>Design &amp; Iteration</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          I followed an engineering design cycle, setting specifications to work towards,
+          researching human joint mechanics and prosthetic technology,
+          prototyping, and iterating. The project went through multiple
+          major design revisions:
+        </p>
+        <div style="margin-bottom: var(--space-lg); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+          <img src="../assets/images/DesignNotesInitialPrototype.jpg" alt="Early design notes and sketches for the articulate digit" style="max-width: 100%; max-height: 500px; height: auto; display: block; margin-inline: auto;">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-2xl); font-style: italic;">[Initial prototype dimensioning]</p>
+
+        <ul style="color: var(--color-text-muted); margin-bottom: var(--space-md); padding-left: var(--space-xl); list-style: disc;">
+          <li><strong>J1 series</strong>: Initial prototypes closely mimicked human finger bone geometry. Worked as a proof of concept but had durability and friction issues at the hinge joints.</li>
+          <li><strong>J3 series</strong>: Departed from the human bone shape and replaced hinges with <strong>ball bearings</strong> friction-fit between split segments. Significantly more durable and smoother, though tight tolerances still caused resin rubbing in places.</li>
+          <li>Discovered that small tendon channels trapped uncured resin during printing: learned to widen channels and split parts to allow drainage.</li>
+        </ul>
+
+        <div style="margin-bottom: var(--space-lg); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+          <img src="../assets/images/InitialFingerPrototype.jpg" alt="Initial finger prototype — first physical build" style="max-width: 100%; max-height: 500px; height: auto; display: block; margin-inline: auto;">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-lg); font-style: italic;">[Caption: Edit title here]</p>
+
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          All parts were modeled in <strong>SolidWorks</strong> and printed
+          on an <strong>Elegoo Saturn 3 Ultra</strong> resin printer using
+          plant-based resins. The mechanical "tendons" are controlled by
+          ECO POWER 12g micro servos driven by an <strong>Arduino UNO WiFi
+          Rev.2</strong> with a Motor Shield Rev.3.
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-lg);">
+          <div>
+            <div style="border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+              <img src="../assets/images/3DoFInsetTendonChannelsPersonalProject.png" alt="3-DOF finger with inset tendon channels" style="max-width: 100%; max-height: 400px; height: auto; display: block; margin-inline: auto;">
+            </div>
+            <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-top: var(--space-xs); font-style: italic;">[Caption: Edit title here]</p>
+          </div>
+          <div>
+            <div style="border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+              <img src="../assets/images/J3_2IRL.png" alt="J3 series articulate digit — physical build" style="max-width: 100%; max-height: 400px; height: auto; display: block; margin-inline: auto;">
+            </div>
+            <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-top: var(--space-xs); font-style: italic;">[Caption: Edit title here]</p>
+          </div>
+        </div>
+
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-2xl);">
+          Specifications included: three segments matching human bone
+          proportions, finger-like range of motion, mechanical tendons for
+          position control, holding 5 lb in a bent position, and surviving
+          1,000+ open/close cycles. Later CAD iterations building on this
+          work are documented in the 
+          <a href="multi-dof-hand-designs.html">Multi-DOF Finger &amp; Hand Designs</a> page.
+        </p>
+
+        <h2>Outcome</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          The J3 design achieved smooth, programmable curl and extension with
+          significantly improved durability over earlier iterations. The ball
+          bearing joints and split-segment approach proved far more reliable
+          than the original hinge design.
+        </p>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-2xl);">
+          More importantly, this project built the mechanical design intuition
+          I later applied to tendon-driven robotic fingers in a research
+          context. Understanding clearances, joint friction, print
+          tolerances, and the gap between a clean CAD model and a working
+          physical mechanism. It was also my introduction to the iterative,
+          failure-driven design process that now underpins all my work, and 
+          one of my first project using Solidworks and CAD design.
+        </p>
+
+        <div style="margin-top: var(--space-2xl); padding-top: var(--space-xl); border-top: 1px solid var(--color-border);">
+          <a href="../projects.html" class="btn btn--outline">&larr; All projects</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <span class="footer__copy">&copy; 2026 Niamh Coles</span>
+      <div class="footer__links">
+        <a href="https://github.com/NiamhC3" class="footer__link" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/niamh-coles" class="footer__link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:niamhcoles@gmail.com" class="footer__link">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

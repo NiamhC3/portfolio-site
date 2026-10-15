@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-DOF Finger & Hand Designs — Niamh Coles</title>
+  <meta name="description" content="Iterative CAD exploration of multi-DOF finger and hand designs, from 3-DOF low-profile fingers to a 16-DOF dexterous hand.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="nav__logo">niamh<span>.</span>coles</a>
+      <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+      <ul class="nav__links">
+        <li><a href="../index.html" class="nav__link">Home</a></li>
+        <li><a href="../about.html" class="nav__link">About</a></li>
+        <li><a href="../projects.html" class="nav__link nav__link--active">Projects</a></li>
+        <li><a href="../resume.html" class="nav__link">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-header__label">CAD · Mechanical Design · 2024–2025</span>
+          <h1 class="section-header__title">Multi-DOF Finger &amp; Hand Designs</h1>
+          <p class="section-header__desc">
+            An ongoing series of CAD explorations in Onshape, iterating on
+            finger mechanisms from simple 3 or 4-DOF designs to a full 20-DOF
+            dexterous hand.
+          </p>
+        </div>
+
+        <div style="margin-bottom: var(--space-2xl); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+          <span class="project-badge project-badge--personal">Personal Project</span>
+          <img src="../assets/images/16DoFHand.png" alt="16-DOF dexterous robotic hand CAD model" style="max-width: 100%; max-height: 500px; height: auto; display: block; margin-inline: auto;">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-top: calc(-1 * var(--space-lg)); margin-bottom: var(--space-2xl); font-style: italic;">[Caption: Edit title here]</p>
+
+        <h2>Motivation</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-2xl);">
+          After building and actuating the
+          <a href="articulate-digit.html">Articulate Mechanical Digit</a>,
+          After my initial exploration of dexterous design, I wanted to dive into 
+          the mechanical portion further by exploring different
+          joint configurations, tendon routing strategies, and finger
+          geometries purely in CAD before committing to prints and hardware.
+          Each iteration tested a different idea about compactness, range of
+          motion, or manufacturing feasibility, eventually leading to a 20-DOF hand concept. 
+        </p>
+
+        <h2>Design Iterations</h2>
+
+        <h3>3-DOF Underactuated Low Profile</h3>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          This design experimented with insetting the tendons, and underactuating the joints 
+          by using a single extension and flexion tendon. This design utlilized same-radius pulleys 
+          for each joint, insuring that the total change in length of the flexion tendon matches that of
+          the extension tendon for all angle changes. This is done so that both tendons can be connected to a 
+          single actuator for simplicity.
+        </p>
+        <p>
+          While this design was simple to actuate and had low friction, it sacrificed dexterity by coupling all 
+          joint movements together with a single tendon. Furthermore, the individual joint angles were not controllable,
+           instead, only the sum of the angle changes across all joints was controllable. 
+        </p>
+        
+        </p>
+        <div style="margin-bottom: var(--space-md); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+          <img src="../assets/images/3DoFLowProfilePersonalProject.png" alt="3-DOF low profile finger design" style="max-width: 100%; max-height: 500px; height: auto; display: block; margin-inline: auto;">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-2xl); font-style: italic;">[3 DOF Underactuated]</p>
+
+        <h3>4-DOF with Splay</h3>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          This design was an experiment with splay and n+1 tendon routing. While sacrificing compactness, 
+          the increased tendon routing pulleys allows for all four degrees of freedom to be individually 
+          actuated. This design also experimented with a splay joint at the base of the proximal phalanx. 
+          While this splay joint moved smoothly, the size was disproportionately large compared to the rest of the finger.
+        </p>
+        <div style="margin-bottom: var(--space-md); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+          <img src="../assets/images/4DoFWithSplayPersonalProject.png" alt="4-DOF finger design with splay joint" style="max-width: 100%; max-height: 500px; height: auto; display: block; margin-inline: auto;">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-2xl); font-style: italic;">[3 DOF Flexion and Extension, 1 DOF Splay (Abduction/Adduction)]</p>
+
+        <h2>20-DOF Hand</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          This hand incorporated the lessons of previous designs into a full hand design, including the n+1 tendon 
+          routing pulley, compact design, and splay joints. 
+        </p>
+        <p>
+         In addition to the design strategies used in previous fingers, this design incorporates the following:
+        <ul style="color: var(--color-text-muted); margin-bottom: var(--space-md); padding-left: var(--space-xl); list-style: disc;">
+          <li> A 4 DOF thumb design with unique degrees of freedom to mimic the range of the human thumb</li>
+          <li> Mechanical backstops to prevent the fingers from bending further than fully extended</li>
+          <li> Joint covers on the backs of the fingers to cover the tendons and prevent damage throughout the entire range of motion</li>
+          <li> Inset tendon routing channels to further prevent interference or damage</li>
+          <li> Used smaller bearings and pre-made pulleys to further compact design</li>
+          <li> Reduced overall finger length to 90mm (from proximal joint to fingertip), and max width of 18mm (medial joint)</li>
+        </ul>
+
+        </p>
+        <p>
+        This design has been printed out of PLA with placeholder prints for the bearings and pulleys. While the components fit 
+        well and tendon routing functions as intended, some issues with the design were found. 
+        <ul style="color: var(--color-text-muted); margin-bottom: var(--space-md); padding-left: var(--space-xl); list-style: disc;">
+          <li> The splay joints were moved from the base of the proximal phalanx to the base of the metacarpal. This creates
+            a limited range of motion, restriction actions such as crossing the fingers.</li>
+          <li> With the placeholder printed bearings and pulleys, noticable friction is present. The steel bearings and pulleys must 
+            be purchased and placed into their locations to evaluate the true friction</li>
+          <li> The thumb joints are placeholders, and are not reinforced properly to prevent damage during use.</li>
+          <li> Some components have weak spots that would be prone to high strain under expected operation. A proper factor
+            of safety analysis needs to be conducted to reinforce the whole design as needed.</li>
+
+        </ul>
+
+        </p> 
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-md);">
+          <div style="border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+            <img src="../assets/images/20DOFFingerCloseUp.png" alt="20-DOF hand finger close-up" style="max-width: 100%; height: 100%; object-fit: contain; display: block; margin-inline: auto;">
+          </div>
+          <div style="border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+            <img src="../assets/images/16DoFHandOrange.png" alt="20-DOF dexterous robotic hand — orange render" style="max-width: 100%; height: 100%; object-fit: contain; display: block; margin-inline: auto;">
+          </div>
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-2xl); font-style: italic;">[Single Finger (left), Full Hand (right)]</p>
+
+        <div style="margin-top: var(--space-2xl); padding-top: var(--space-xl); border-top: 1px solid var(--color-border);">
+          <a href="../projects.html" class="btn btn--outline">&larr; All projects</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <span class="footer__copy">&copy; 2026 Niamh Coles</span>
+      <div class="footer__links">
+        <a href="https://github.com/NiamhC3" class="footer__link" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/niamh-coles" class="footer__link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:niamhcoles@gmail.com" class="footer__link">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

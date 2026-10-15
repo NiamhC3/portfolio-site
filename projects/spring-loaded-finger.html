@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3-DOF Spring-Loaded Finger — Niamh Coles</title>
+  <meta name="description" content="Dynamic modeling, Simulink simulation, and experimental validation of a three degree-of-freedom spring-loaded robotic finger.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="nav__logo">niamh<span>.</span>coles</a>
+      <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+      <ul class="nav__links">
+        <li><a href="../index.html" class="nav__link">Home</a></li>
+        <li><a href="../about.html" class="nav__link">About</a></li>
+        <li><a href="../projects.html" class="nav__link nav__link--active">Projects</a></li>
+        <li><a href="../resume.html" class="nav__link">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-header__label">Dynamics · Simulation · 2025</span>
+          <h1 class="section-header__title">3-DOF Spring-Loaded Robotic Finger</h1>
+          <p class="section-header__desc">
+            Designed, mathematically modeled, simulated, and experimentally
+            validated a three degree-of-freedom spring-loaded robotic finger.
+          </p>
+        </div>
+
+        <div class="project-card__image" style="aspect-ratio: 16/9; margin-bottom: var(--space-lg); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border);">
+          <span class="project-badge project-badge--class">Class Project</span>
+          <img src="../assets/images/SpringDriven3DoFFinger.jpg" alt="3-DOF spring-loaded robotic finger prototype">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-sm); font-style: italic;">[Caption: Edit title here]</p>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-2xl);">
+          Team project (MXET 375 — Applied Dynamic Systems).
+        </p>
+
+        <h2>Motivation</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-2xl);">
+          This project was designed to replicate the motion of a human
+          finger using a servo-driven flexion, and spring-return extension. The real life design was then rigorously
+           validated against a mathematical model of its dynamics The goal was to bridge the gap between
+          theoretical dynamic modeling (rotational inertia, torque-current
+          relationships, spring forces) and the messier reality of a physical
+          prototype.
+        </p>
+
+        <h2>Design &amp; Modeling</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          The finger consists of three rigid 3D-printed phalanges (proximal,
+          medial, distal) connected by revolute joints. Each joint is driven
+          by an MG996R high-torque servo and returned to its rest position by
+          a pair of springs, giving independent control of all three DOF.
+        </p>
+          To isolate each joint's motion from the rest, the tendons were routed through the center of each 
+          joint lower than the one they intended to affect. This resulted in approximately 0 torque 
+          around each joint from the tendons other than the designated flexion tendon for that joint.
+        <p>
+
+        </p>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          We derived the full rotational equations of motion for each segment,
+          accounting for:
+        </p>
+        <ul style="color: var(--color-text-muted); margin-bottom: var(--space-md); padding-left: var(--space-xl); list-style: disc;">
+          <li>Rotational inertia of each phalanx</li>
+          <li>Applied servo torque (estimated from a torque-current proportionality)</li>
+          <li>Spring restoring torque at each joint</li>
+          <li>Gravitational torque on each segment</li>
+          <li>Viscous damping and friction</li>
+          <li>Coupling forces between segments (reaction forces at each joint)</li>
+        </ul>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-2xl);">
+          The system was simulated in <strong>MATLAB Simulink</strong> and
+          <strong>Simscape Multibody</strong>, with recorded servo current
+          data used as the torque input.
+        </p>
+
+        <div style="margin-bottom: var(--space-2xl); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+          <img src="../assets/images/SpringLoadedFingerCAD.png" alt="CAD model of the 3-DOF spring-loaded finger" style="max-width: 100%; max-height: 500px; height: auto; display: block; margin-inline: auto;">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-top: calc(-1 * var(--space-lg)); margin-bottom: var(--space-2xl); font-style: italic;">[Finger Assembly in Onshape]</p>
+
+        <h2>Experimental Validation</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          Colored tracking markers were placed at each joint and a camera
+          recorded the finger's motion. Joint angles were extracted from
+          video using <strong>Python</strong> (NumPy and Pandas), then
+          compared against the Simulink simulation.
+        </p>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          The comparison revealed that simulated angles were smoother and
+          lower-amplitude than experimental data. The physical system
+          exhibited larger oscillations across all three joints. Key sources
+          of error included:
+        </p>
+        <ul style="color: var(--color-text-muted); margin-bottom: var(--space-md); padding-left: var(--space-xl); list-style: disc;">
+          <li>Servo current noise: servos have inherent noise from internal position sensing, contaminating the torque estimate</li>
+          <li>Unmodeled dynamics: uneven spring compression, 3D-printed part deformation under load</li>
+          <li>Joint friction that was difficult to characterize precisely</li>
+        </ul>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-2xl);">
+          The biggest takeaway was the choice of actuator: BLDC motors would
+          have provided a cleaner current signal for torque estimation, or a
+          pre or post processing filter such as a bandpass on the servo current data could have improved the
+          simulation input significantly.
+        </p>
+
+        <div style="margin-bottom: var(--space-lg); border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); overflow: hidden; text-align: center; background: var(--color-bg-offset, #f9f9f9);">
+          <img src="../assets/images/MXET375ExperimentalResults.png" alt="Experimental vs simulated joint angle results" style="max-width: 100%; max-height: 500px; height: auto; display: block; margin-inline: auto;">
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-top: calc(-1 * var(--space-lg)); margin-bottom: var(--space-2xl); font-style: italic;">[Comparison of Experimental vs. Hardware Results]</p>
+
+        <h2>Outcome</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-2xl);">
+          The project produced a fully functional spring-loaded finger
+          prototype with independent 3-DOF actuation, a complete set of
+          derived equations of motion, a validated Simulink model, and
+          quantitative comparison between simulated and experimental joint
+          trajectories. It reinforced core dynamics concepts such as rotational
+          inertia, torque-current relationships, and spring-mass-damper
+          behavior, while highlighting the practical challenges of
+          translating theoretical dynamics into real hardware.
+        </p>
+
+        <div style="margin-top: var(--space-2xl); padding-top: var(--space-xl); border-top: 1px solid var(--color-border);">
+          <a href="../projects.html" class="btn btn--outline">&larr; All projects</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <span class="footer__copy">&copy; 2026 Niamh Coles</span>
+      <div class="footer__links">
+        <a href="https://github.com/NiamhC3" class="footer__link" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/niamh-coles" class="footer__link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:niamhcoles@gmail.com" class="footer__link">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
