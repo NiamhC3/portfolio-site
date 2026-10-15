@@ -709,6 +709,19 @@ section + section {
   .about-intro {
     grid-template-columns: 1fr;
   }
+  .about-intro__photo {
+    margin-top: 0;
+    max-width: 300px;
+    margin-inline: auto;
+  }
+  .about-photo__art--painting {
+    bottom: -80px;
+    left: 0;
+  }
+  .about-photo__art--drawing {
+    bottom: -100px;
+    right: 0;
+  }
 }
 
 .about-intro__text {
