@@ -54,4 +54,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Email copy-to-clipboard
+  document.querySelectorAll(".email-copy").forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      var email = btn.getAttribute("data-email");
+      navigator.clipboard.writeText(email).then(function () {
+        var original = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(function () { btn.textContent = original; }, 2000);
+      });
+    });
+  });
+
 });
