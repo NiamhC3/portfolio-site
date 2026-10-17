@@ -109,25 +109,31 @@
         </p>
 
         <h2>Outcome</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          The finger demonstrated position tracking and backdrivability across its
+          four degrees of freedom, with the feedforward and PID control scheme
+          successfully driving the finger to commanded joint positions. However,
+          the system faced notable limitations. The linear approximation of the
+          four-bar coupling was only accurate for the upper portion of the
+          proximal joint's range (~70°), and an unresolved error in the joint angle
+          calculation required manual tuning of the feedforward terms.
+        </p>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          The ungeared Maxon motors provided high mechanical backdrivability but
+          generated significant heat at the required torques, softening the PLA
+          motor mounts and causing calibrations to drift. The ODrive controllers
+          also introduced intermittent errors and calibration issues that
+          complicated testing. CAN bus saturation with four ODrives sending
+          feedback at 10&nbsp;ms intervals limited the update frequency, and serial
+          communication for the UI further reduced the control loop from
+          ~200&nbsp;Hz to ~35&nbsp;Hz.
+        </p>
         <p style="color: var(--color-text-muted); margin-bottom: var(--space-2xl);">
-          The completed finger achieves reliable position tracking across its
-          four degrees of freedom while maintaining backdrivability, meaning
-          external forces can move the joints without damaging the mechanism.
-          The combination of feedforward compensation and PID feedback proved
-          effective for managing the nonlinear tendon-joint coupling common
-          in underactuated designs.
-          </p>
-          <p>
-          Notably, this project was limited by the hardware and time available. The Maxon motors 
-          were ungeared, allowing for high mechanical backdrivabiliity, but required the motors to 
-          generate large amounts of heat, and have a larger footprint to deliver the torque required. 
-          The heat generated was enough to soften the PLA  mounts, causing the calibrations to drift. In 
-          addition, the open source ODrive code frequently encountered errors or calibration drifts, complicating
-          testing. 
-
-          Future recomendations include eximining options for the motors, motor controllers, and mount material. 
-          Additionally, the program should be optimized to reduce run time and increase frequency of the controller updates.
-          </p>
+          Future recommendations include exploring geared motors or higher-temperature mount
+          materials, splitting CAN communication across multiple buses, optimizing the
+          control loop timing, and replacing the linear coupling approximation with a
+          complete function for full-range position control.
+        </p>
 
           <p>
           Read more on the GitHub page linked below.
