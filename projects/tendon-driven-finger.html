@@ -87,6 +87,27 @@
         </div>
         <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-top: calc(-1 * var(--space-lg)); margin-bottom: var(--space-2xl); font-style: italic;">[Finger control derivation]</p>
 
+        <h2>CAN Communication &amp; Calibration</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          The four ODrive motor controllers communicate over a shared CAN bus, which required careful
+          hardware setup and debugging. CAN relies on twisted-pair differential signaling (CANH/CANL),
+          120&nbsp;&ohm; terminating resistors at each end of the chain, and a common ground across all
+          devices. Issues such as signal noise, bus saturation, and misconfigured node IDs were
+          diagnosed using an oscilloscope connected directly to the CAN lines and a CAN sniffer. I
+          wrote a comprehensive
+          <a href="../assets/CAN%20Debugging.pdf" target="_blank" rel="noopener" style="color: var(--color-accent);">CAN Debugging Guide</a>
+          documenting the troubleshooting process for future users of the system.
+        </p>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-2xl);">
+          Motor calibration was performed through the ODrive GUI by disconnecting the encoder
+          harnesses, removing the pulleys from the motor shafts, running the calibration routine, and
+          then reassembling. Calibrations were saved to each ODrive and needed to be repeated whenever
+          unexpected behavior occurred or a tendon went slack, since slackness indicated the motors
+          were no longer providing the correct torque. On startup, the system collected motor position
+          offsets by driving the finger to a known upright reference position before beginning
+          closed-loop control.
+        </p>
+
         <h2>Outcome</h2>
         <p style="color: var(--color-text-muted); margin-bottom: var(--space-2xl);">
           The completed finger achieves reliable position tracking across its
